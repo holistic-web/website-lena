@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div class="Game">
 		<div class="App__inner">
 
 			<b-card
@@ -28,6 +28,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import GameCard from './components/GameCard';
 
 export default {
 	name: 'HelloWorld',

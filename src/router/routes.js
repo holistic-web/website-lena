@@ -1,9 +1,9 @@
-import homeRoutes from '../containers/Home';
-import ghostBusterRoutes from '../containers/GhostBuster';
+import landingRoutes from '../containers/Landing';
+import gameRoutes from '../containers/Game';
 
 const routes = [
-	...homeRoutes,
-	...ghostBusterRoutes
+	...landingRoutes,
+	...gameRoutes
 ];
 
 export default routes;

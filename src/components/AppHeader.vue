@@ -44,6 +44,7 @@ $mobileBreak: $Mobile-Width;
 	width: 100%;
 	z-index: 10;
 	transition: box-shadow 350ms ease-in-out;
+
 	&__title{
 		height: $headerHeight / 2;
 		color: $textColour;

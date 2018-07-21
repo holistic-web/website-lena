@@ -1,9 +1,11 @@
 <template>
-    <div class="Footer">
-        <div class="App__inner Footer__inner">
-            <p> Andrew and Mike Ltd. Corp</p>
-        </div>
-    </div>
+	<div class="Footer">
+		<div class="App__inner App__inner--noPadding Footer__inner">
+			<p>
+				© Helena 2018
+			</p>
+		</div>
+	</div>
 </template>
 
 
@@ -16,11 +18,14 @@ $height: $Footer-Height;
 
 
 .Footer{
+	width: 100%;
 	height: $height;
 	background: $Theme-Colour;
+	color: $textColour;
 
 	&__inner {
-		padding-top: 0.8em;
+		position: relative;
+		top: 0.8em;
 	}
 }
 
