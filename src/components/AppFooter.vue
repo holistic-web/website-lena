@@ -10,11 +10,14 @@
 <style lang="scss">
 @import '../settings';
 
-$highlight: $Highlight-Colour;
+$textColour: $Highlight-Colour;
+$backgroundColour: $Background-Colour;
+$height: $Footer-Height;
+
 
 .Footer{
-	$height: $Footer-Height;
-	background: $highlight;
+	height: $height;
+	background: $Theme-Colour;
 
 	&__inner {
 		padding-top: 0.8em;
