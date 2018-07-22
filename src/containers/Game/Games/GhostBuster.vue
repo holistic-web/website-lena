@@ -4,9 +4,19 @@
 
 </template>
 
+<script>
+import Ghost from './components/GhostBuster/Ghost';
+
+export default {
+	components: {
+		Ghost
+	}
+};
+</script>
+
+
 <style lang="scss">
 @import '../../../settings';
-
 
 $headerHeight: $Header-Height;
 

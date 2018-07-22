@@ -1,30 +1,24 @@
 <template>
 
-	<game0 v-if="this.$route.params.id === '0'"/>
+	<ghost-buster v-if="game.component === 'GhostBuster'"/>
 
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-
-import Game0 from './games/Game0';
+import games from './Games';
+import GhostBuster from './Games/GhostBuster';
 
 export default {
 	components: {
-		Game0
+		GhostBuster
 	},
-	computed: {
-		...mapGetters({
-			game: 'game/game'
-		})
-	},
-	methods: {
-		...mapActions({
-			fetch: 'game/fetchDetail'
-		})
+	data() {
+		return {
+			game: {}
+		};
 	},
 	created() {
-		this.fetch();
+		this.game = games.find(game => game._id === this.$route.params.id);
 	}
 };
 </script>

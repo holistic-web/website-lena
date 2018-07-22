@@ -1,33 +1,31 @@
 <template>
 
-	<b-card
-		:title="game.name"
-		:img-src="game.thumbnail"
-		img-alt="game.name"
-		img-top
-		tag="article"
-		style="max-width: 20rem;"
-		class="mb-2">
-
-		<p
-			class="card-text"
-			v-text="game.description"/>
-
-		<b-button
-			href="#/games/0"
-			variant="primary">
-			Play now!
-		</b-button>
-
-		<b-button
-			v-if="isOriginalLinkVisible"
-			:href="game.meta.originalLink"
-			target="_blank"
-			variant="secondary">
-			Play orginal
-		</b-button>
-
-	</b-card>
+	<b-link
+		class="GameCard__link"
+		:href="standardLinkText">
+		<b-card
+			:title="game.name"
+			:img-src="game.thumbnail"
+			img-alt="game.name"
+			img-top
+			tag="article"
+			style="max-width: 20rem;"
+			class="mb-2 GameCard">
+			<p
+				class="card-text"
+				v-text="game.description"/>
+			<b-button
+				class="GameCard__playGame"
+				variant="outline-primary"
+				v-text="'Play Now!'"/>
+			<b-button
+				v-if="isOriginalLinkVisible"
+				:href="game.meta.originalLink"
+				target="_blank"
+				variant="secondary"
+				v-text="'Play Original'"/>
+		</b-card>
+	</b-link>
 
 </template>
 
@@ -40,6 +38,9 @@ export default {
 		}
 	},
 	computed: {
+		standardLinkText() {
+			return `#/games/${this.game._id}`;
+		},
 		isOriginalLinkVisible() {
 			return this.game.meta.originalLink;
 		}
@@ -51,16 +52,39 @@ export default {
 <style lang="scss">
 @import '../../../settings';
 
+$textColour: $Text-Colour;
 
-$headerHeight: $Header-Height;
+$transitionTime: 0.1s;
 
-.Ghostbuster {
-	width: 100%;
-	height: calc(100vh - #{$headerHeight});
+.GameCard {
+	transition: margin $transitionTime, box-shadow $transitionTime;
 	position: relative;
-	top: $headerHeight;
-	background-image: url('/static/images/spooky-forest.jpg');
-	background-size: cover;
+
+	&:hover {
+		position: relative;
+		margin: -3px -2px 0 0;
+		box-shadow: 1px 2px 0 0px #ccc;
+
+		.GameCard__playGame {
+			// duplicate bootstrap outline-primary hover styles
+			color: #fff;
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+	}
+
+	&__playGame {
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&__link, &__link:hover {
+		text-decoration: none !important;
+		color: $textColour
+	}
 }
 
 </style>

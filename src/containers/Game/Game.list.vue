@@ -12,25 +12,20 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import games from './Games';
 import GameCard from './components/GameCard';
 
 export default {
 	components: {
 		GameCard
 	},
-	computed: {
-		...mapGetters({
-			games: 'game/games'
-		})
-	},
-	methods: {
-		...mapActions({
-			fetch: 'game/fetchList'
-		})
+	data() {
+		return {
+			games: []
+		};
 	},
 	created() {
-		this.fetch();
+		this.games = games;
 	}
 };
 </script>
@@ -38,18 +33,4 @@ export default {
 <style lang="scss">
 @import '../../settings';
 
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
