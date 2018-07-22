@@ -7,7 +7,7 @@
 		v-for="item in menuItems"
 		:key="item.path"
 		v-text="item.menuName"
-		exact/>
+		:exact="isLinkExact(item.path)"/>
 
 </div>
 </template>
@@ -43,6 +43,11 @@ export default {
 				return this.routes.filter(route => route.menu);
 			}
 			return this.items;
+		}
+	},
+	methods: {
+		isLinkExact(link) {
+			return link === '/';
 		}
 	}
 };

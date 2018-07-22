@@ -2,25 +2,10 @@
 	<div class="Game">
 		<div class="App__inner">
 
-			<b-card
-				title="Ghost Buster!"
-				img-src="/static/images/ghost-buster.png"
-				img-alt="Ghost Buster"
-				img-top
-				tag="article"
-				style="max-width: 20rem;"
-				class="mb-2">
-				<p class="card-text">
-					Try out Helena's first game!
-				</p>
-				<b-button href="#/ghostbuster" variant="primary">Play now!</b-button>
-				<b-button
-					href="https://scratch.mit.edu/projects/227734828/#fullscreen"
-					target="_blank"
-					variant="secondary">
-					Play orginal
-				</b-button>
-			</b-card>
+			<game-card
+				v-for="game in games"
+				:key="game._id"
+				:game="game"/>
 
 		</div>
 	</div>
@@ -31,24 +16,21 @@ import { mapGetters, mapActions } from 'vuex';
 import GameCard from './components/GameCard';
 
 export default {
-	name: 'HelloWorld',
-	data() {
-		return {
-			msg: 'Welcome to Your Vue.js App'
-		};
+	components: {
+		GameCard
 	},
 	computed: {
 		...mapGetters({
-			poems: 'poems'
+			games: 'game/games'
 		})
 	},
 	methods: {
 		...mapActions({
-			loadPoems: 'loadPoems'
+			fetch: 'game/fetchList'
 		})
 	},
 	created() {
-		this.loadPoems();
+		this.fetch();
 	}
 };
 </script>

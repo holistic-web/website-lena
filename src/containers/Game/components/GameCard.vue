@@ -1,22 +1,27 @@
 <template>
 
 	<b-card
-		title="Ghost Buster!"
-		img-src="/static/images/ghost-buster.png"
-		img-alt="Ghost Buster"
+		:title="game.name"
+		:img-src="game.thumbnail"
+		img-alt="game.name"
 		img-top
 		tag="article"
 		style="max-width: 20rem;"
 		class="mb-2">
 
-		<p class="card-text">
-			Try out Helena's first game!
-		</p>
-
-		<b-button href="#/ghostbuster" variant="primary">Play now!</b-button>
+		<p
+			class="card-text"
+			v-text="game.description"/>
 
 		<b-button
-			href="https://scratch.mit.edu/projects/227734828/#fullscreen"
+			href="#/games/0"
+			variant="primary">
+			Play now!
+		</b-button>
+
+		<b-button
+			v-if="isOriginalLinkVisible"
+			:href="game.meta.originalLink"
 			target="_blank"
 			variant="secondary">
 			Play orginal
@@ -25,6 +30,23 @@
 	</b-card>
 
 </template>
+
+<script>
+export default {
+	props: {
+		game: {
+			type: Object,
+			required: true
+		}
+	},
+	computed: {
+		isOriginalLinkVisible() {
+			return this.game.meta.originalLink;
+		}
+	}
+};
+</script>
+
 
 <style lang="scss">
 @import '../../../settings';

@@ -3,32 +3,12 @@
 	<div class="hello">
 		<div class="App__inner">
 
-			<b-card
-				title="Ghost Buster!"
-				img-src="/static/images/ghost-buster.png"
-				img-alt="Ghost Buster"
-				img-top
-				tag="article"
-				style="max-width: 20rem;"
-				class="mb-2">
-				<p class="card-text">
-					Try out Helena's first game!
-				</p>
-				<b-button href="#/ghostbuster" variant="primary">Play now!</b-button>
-				<b-button
-					href="https://scratch.mit.edu/projects/227734828/#fullscreen"
-					target="_blank"
-					variant="secondary">
-					Play orginal
-				</b-button>
-			</b-card>
 
 		</div>
 	</div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: 'HelloWorld',
@@ -38,17 +18,12 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters({
-			poems: 'poems'
-		})
+
 	},
 	methods: {
-		...mapActions({
-			loadPoems: 'loadPoems'
-		})
+
 	},
 	created() {
-		this.loadPoems();
 	}
 };
 </script>

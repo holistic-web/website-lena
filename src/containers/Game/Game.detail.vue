@@ -1,20 +1,31 @@
 <template>
-	<section class="Ghostbuster"/>
+
+	<game0 v-if="this.$route.params.id === '0'"/>
+
 </template>
 
-<style lang="scss">
-@import '../../settings';
+<script>
+import { mapGetters, mapActions } from 'vuex';
 
+import Game0 from './games/Game0';
 
-$headerHeight: $Header-Height;
+export default {
+	components: {
+		Game0
+	},
+	computed: {
+		...mapGetters({
+			game: 'game/game'
+		})
+	},
+	methods: {
+		...mapActions({
+			fetch: 'game/fetchDetail'
+		})
+	},
+	created() {
+		this.fetch();
+	}
+};
+</script>
 
-.Ghostbuster {
-	width: 100%;
-	height: calc(100vh - #{$headerHeight});
-	position: relative;
-	top: $headerHeight;
-	background-image: url('/static/images/spooky-forest.jpg');
-	background-size: cover;
-}
-
-</style>
