@@ -1,9 +1,11 @@
 <template>
+
 	<section class="Ghostbuster"/>
+
 </template>
 
 <style lang="scss">
-@import '../../settings';
+@import '../../../settings';
 
 
 $headerHeight: $Header-Height;

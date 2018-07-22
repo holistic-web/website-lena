@@ -1,24 +1,24 @@
 <template>
 	<div class="App">
 
-		<app-header/>
+		<app-header class="App__header"/>
 
 		<router-view class="App__wrapper"/>
 
-		<footer/>
+		<app-footer class="App__footer"/>
 
 	</div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader';
-import Footer from './components/Footer';
+import AppFooter from './components/AppFooter';
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader,
-		Footer
+		AppFooter
 	}
 };
 </script>
@@ -34,12 +34,16 @@ export default {
 
 	&__inner {
 		width:  $Frame-Width;
-		margin: auto;
+		margin: 0 calc((100vw - #{$Frame-Width}) / 2);
 		position: relative;
 		padding-top: 60px;
 
 		&--fullHeight {
 			height: 100%;
+		}
+
+		&--noPadding {
+			padding: 0;
 		}
 
 		@media all and (max-width: $Frame-Width) {
@@ -50,10 +54,19 @@ export default {
 
 	}
 
+	&__header {
+		float: left;
+	}
+
 	&__wrapper {
 		padding-top: $Header-Height;
 		min-height: calc(100vh - #{$Footer-Height});
 		background: $Background-Colour;
+		float: left;
+	}
+
+	&__footer {
+		float: left;
 	}
 
 	&--center {
